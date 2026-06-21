@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Духи Fortnite — таблица</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0b1424;
+            background-image: radial-gradient(circle at 20% 30%, #1a2a44, #070e1a);
+            font-family: 'Roboto Condensed', sans-serif;
+            color: #fff;
+            min-height: 100vh;
+            padding: 30px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 1400px;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            border-radius: 40px;
+            padding: 30px 25px;
+            border: 2px solid #f7d44a;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-family: 'Bangers', cursive;
+            font-size: 4.5rem;
+            letter-spacing: 4px;
+            color: #f7d44a;
+            text-shadow: 5px 5px 0 #a0732e, 8px 8px 0 #0f1f2e;
+            line-height: 1;
+        }
+
+        .header p {
+            color: #8ab3d0;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            border-top: 2px solid #f7d44a55;
+            border-bottom: 2px solid #f7d44a55;
+            display: inline-block;
+            padding: 8px 30px;
+            margin-top: 8px;
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+            border-radius: 24px;
+            border: 2px solid #2e5270;
+            background: #112433;
+            padding: 4px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 700px;
+        }
+
+        thead th {
+            font-family: 'Bangers', cursive;
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+            color: #f7d44a;
+            background: #0b1a2a;
+            padding: 14px 10px;
+            border-bottom: 4px solid #f7d44a;
+            text-align: center;
+            text-shadow: 0 2px 0 #0f1f2e;
+        }
+
+        thead th:first-child {
+            font-size: 1.6rem;
+            min-width: 140px;
+        }
+
+        thead th:not(:first-child) {
+            min-width: 100px;
+        }
+
+        td {
+            padding: 12px 6px;
+            text-align: center;
+            border-bottom: 1px solid #2e4d6b;
+            vertical-align: middle;
+        }
+
+        .spirit-name-cell {
+            font-family: 'Bangers', cursive;
+            font-size: 1.5rem;
+            color: #f0f4fa;
+            text-shadow: 0 2px 0 #0b1a2a;
+            background: #0f2235;
+            border-right: 2px solid #2e5270;
+            padding: 12px 8px;
+            white-space: nowrap;
+        }
+
+        .spirit-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 0;
+        }
+
+        .spirit-icon-small {
+            width: 64px;
+            height: 64px;
+            background: #1a334a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid #4f7a9c;
+            box-shadow: inset 0 -4px 0 #0e1c2a;
+            flex-shrink: 0;
+            overflow: hidden;
+            transition: 0.2s;
+        }
+
+        .spirit-icon-small:hover {
+            transform: scale(1.05);
+            border-color: #f7d44a;
+        }
+
+        .spirit-icon-small img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .spirit-icon-empty {
+            color: #4f7490;
+            font-size: 0.7rem;
+            text-align: center;
+            line-height: 1.2;
+            padding: 4px;
+        }
+
+        .checkbox-square-small {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            padding: 2px;
+        }
+
+        .checkbox-square-small input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 26px;
+            height: 26px;
+            background: #0e1f2e;
+            border: 3px solid #4f7490;
+            border-radius: 6px;
+            position: relative;
+            cursor: pointer;
+            transition: 0.15s;
+            flex-shrink: 0;
+        }
+
+        .checkbox-square-small input[type="checkbox"]:checked {
+            background: #f7d44a;
+            border-color: #f7d44a;
+            box-shadow: 0 0 12px #f7d44a88;
+        }
+
+        .checkbox-square-small input[type="checkbox"]:checked::after {
+            content: "✓";
+            position: absolute;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0f1f2e;
+            left: 1px;
+            top: -5px;
+        }
+
+        .stats-bar {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 20px;
+            background: #112433;
+            border-radius: 60px;
+            padding: 14px 28px;
+            border: 1px solid #3c6180;
+            margin-top: 25px;
+        }
+
+        .stats-bar .checked-label {
+            background: #0b1929;
+            padding: 6px 22px;
+            border-radius: 40px;
+            border-left: 4px solid #f7d44a;
+            font-size: 1.1rem;
+            color: #b0cfec;
+        }
+
+        .stats-bar .highlight {
+            color: #f7d44a;
+            font-weight: 700;
+        }
+
+        #resetBtn {
+            background: #c72f2f;
+            border: none;
+            font-weight: 700;
+            padding: 8px 30px;
+            border-radius: 40px;
+            color: white;
+            font-size: 1.1rem;
+            cursor: pointer;
+            border-bottom: 5px solid #691c1c;
+            transition: 0.1s;
+            font-family: 'Roboto Condensed', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        #resetBtn:hover {
+            background: #e03a3a;
+            transform: scale(0.96);
+        }
+
+        @media (max-width: 700px) {
+            .header h1 { font-size: 2.8rem; }
+            .stats-bar { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+        }
+
+        @media (max-width: 500px) {
+            .spirit-name-cell { font-size: 1.1rem; padding: 8px 4px; }
+            thead th { font-size: 1rem; padding: 10px 4px; }
+            td { padding: 8px 2px; }
+            .spirit-icon-small { width: 40px; height: 40px; }
+            .stats-bar { flex-direction: column; align-items: stretch; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>⚡ SPIRITS ⚡</h1>
+        <p>table of varieties and marks</p>
+    </div>
+
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Spirit</th>
+                    <th>Simple</th>
+                    <th>Gold</th>
+                    <th>Marmalade</th>
+                    <th>Cosmos</th>
+                    <th>Diamond</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+            </tbody>
+        </table>
+    </div>
+
+    <div class="stats-bar">
+        <span class="checked-label">✅ Checked: <span id="checkedCount" class="highlight">0</span></span>
+        <button id="resetBtn">✖ Reset</button>
+    </div>
+</div>
+
+<script>
+    (function() {
+        const spirits = [
+            { id: 'earth', name: 'Earth Spirit' },
+            { id: 'fire', name: 'Fire Spirit' },
+            { id: 'water', name: 'Water Spirit' },
+            { id: 'duck', name: 'Duck Spirit' },
+            { id: 'ghost', name: 'Ghost Spirit' },
+            { id: 'demon', name: 'Demon Spirit' },
+            { id: 'king', name: 'King Spirit' },
+            { id: 'fantastic', name: 'Fantastic Spirit' },
+            { id: 'rebel', name: 'Rebel Spirit' },
+            { id: 'epicenter', name: 'Epicenter Spirit' },
+            { id: 'peanut', name: 'Peanut Spirit' }
+        ];
+
+        const variants = ['simple', 'gold', 'marmalade', 'cosmos', 'diamond'];
+
+        const imageMap = {
+            'earth-simple': 'https://fortnitefun.ru/wp-content/uploads/2026/06/duh-zemli.webp',
+            'earth-gold': 'https://fortnitefun.ru/wp-content/uploads/2026/06/zolotoj-duh-zemli.webp',
+            'earth-marmalade': 'https://fortnitefun.ru/wp-content/uploads/2026/06/konfetnyj-duh-zemli.webp',
+            'earth-cosmos': 'https://fortnitefun.ru/wp-content/uploads/2026/06/galakticheskij-duh-zemli.webp',
+            'earth-diamond': 'https://fortnitefun.ru/wp-content/uploads/2026/06/galakticheskij-duh-zemli.webp',
+
+            'fire-simple': 'https://fortnitefun.ru/wp-content/uploads/2026/06/duh-ognja.webp',
+            'fire-gold': 'https://fortnitefun.ru/wp-content/uploads/2026/06/zolotoj-duh-ognja.webp',
+            'fire-marmalade': 'https://fortnitefun.ru/wp-content/uploads/2026/06/konfetnyj-duh-ognja.webp',
+            'fire-cosmos': 'https://fortnitefun.ru/wp-content/uploads/2026/06/galakticheskij-duh-ognja.webp',
+            'fire-diamond': 'https://fortnitefun.ru/wp-content/uploads/2026/06/galakticheskij-duh-ognja.webp',
+
+            'water-simple': 'https://fortnitefun.ru/wp-content/uploads/2026/06/duh-vody.webp',
+            'water-gold': 'https://fortnitefun.ru/wp-content/uploads/2026/06/zolotoj-duh-vody.webp',
+            'water-marmalade': 'https://fortnitefun.ru/wp-content/uploads/2026/06/konfetnyj-duh-vody.webp',
+            'water-cosmos': 'https://fortnitefun.ru/wp-content/uploads/2026/06/galakticheskij-duh-vody.webp',
+            'water-diamond': 'https://fortnitefun.ru/wp-content/uploads/2026/06/galakticheskij-duh-vody.webp',
+
+            'duck-simple': 'https://fortnitefun.ru/wp-content/uploads/2026/06/utinyj-duh.webp',
+            'duck-gold': 'https://fortnitefun.ru/wp-content/uploads/2026/06/zolotoj-utinyj-duh.webp',
+            'duck-marmalade': 'https://fortnitefun.ru/wp-content/uploads/2026/06/konfetnyj-utinyj-duh.webp',
+            'duck-cosmos': 'https://fortnitefun.ru/wp-content/uploads/2026/06/galakticheskij-utinyj-duh.webp',
+            'duck-diamond': 'https://fortnitefun.ru/wp-content/uploads/2026/06/galakticheskij-utinyj-duh.webp',
+
+            'ghost-simple': 'https://fortnitefun.ru/wp-content/uploads/2026/06/prizrachnyj-duh.webp',
+            'ghost-gold': 'https://fortnitefun.ru/wp-content/uploads/2026/06/zolotoj-prizrachnyj-duh.webp',
+            'ghost-marmalade': 'https://fortnitefun.ru/wp-content/uploads/2026/06/konfetnyj-prizrachnyj-duh.webp',
+            'ghost-cosmos': 'https://fortnitefun.ru/wp-content/uploads/2026/06/galakticheskij-prizrachnyj-duh.webp',
+            'ghost-diamond': 'https://fortnitefun.ru/wp-content/uploads/2026/06/galakticheskij-prizrachnyj-duh.webp',
+
+            'demon-simple': 'https://fortnitefun.ru/wp-content/uploads/2026/06/demonicheskij-duh.webp',
+            'demon-gold': 'https://fortnitefun.ru/wp-content/uploads/2026/06/zolotoj-demonicheskij-duh.webp',
+            'demon-marmalade': 'https://fortnitefun.ru/wp-content/uploads/2026/06/konfetnyj-demonicheskij-duh.webp',
+            'demon-cosmos': 'https://fortnitefun.ru/wp-content/uploads/2026/06/galakticheskij-demonicheskij-duh.webp',
+            'demon-diamond': 'https://fortnitefun.ru/wp-content/uploads/2026/06/galakticheskij-demonicheskij-duh.webp',
+
+            'king-simple': 'https://fortnitefun.ru/wp-content/uploads/2026/06/korol-duh.webp',
+            'king-gold': 'https://fortnitefun.ru/wp-content/uploads/2026/06/zolotoj-korol-duh.webp',
+            'king-marmalade': 'https://fortnitefun.ru/wp-content/uploads/2026/06/konfetnyj-korol-duh.webp',
+            'king-cosmos': 'https://fortnitefun.ru/wp-content/uploads/2026/06/galakticheskij-korol-duh.webp',
+            'king-diamond': 'https://fortnitefun.ru/wp-content/uploads/2026/06/galakticheskij-korol-duh.webp',
+
+            'fantastic-simple': 'https://fortnitefun.ru/wp-content/uploads/2026/06/fantasticheskij-duh.webp',
+            'fantastic-gold': 'https://fortnitefun.ru/wp-content/uploads/2026/06/zolotoj-fantasticheskij-duh.webp',
+            'fantastic-marmalade': 'https://fortnitefun.ru/wp-content/uploads/2026/06/konfetnyj-fantasticheskij-duh.webp',
+            'fantastic-cosmos': 'https://fortnitefun.ru/wp-content/uploads/2026/06/galakticheskij-fantasticheskij-duh.webp',
+            'fantastic-diamond': 'https://fortnitefun.ru/wp-content/uploads/2026/06/galakticheskij-fantasticheskij-duh.webp',
+
+            'rebel-simple': 'https://fortnitefun.ru/wp-content/uploads/2026/06/buntarskij-duh.webp',
+            'rebel-gold': 'https://fortnitefun.ru/wp-content/uploads/2026/06/zolotoj-buntarskij-duh.webp',
+            'rebel-marmalade': 'https://fortnitefun.ru/wp-content/uploads/2026/06/konfetnyj-buntarskij-duh.webp',
+            'rebel-cosmos': 'https://fortnitefun.ru/wp-content/uploads/2026/06/galakticheskij-buntarskij-duh.webp',
+            'rebel-diamond': 'https://fortnitefun.ru/wp-content/uploads/2026/06/galakticheskij-buntarskij-duh.webp',
+
+            'epicenter-simple': 'https://fortnitefun.ru/wp-content/uploads/2026/06/duh-nulevoj-tochki.webp',
+            'epicenter-gold': 'https://fortnitefun.ru/wp-content/uploads/2026/06/zolotoj-duh-nulevoj-tochki.webp',
+            'epicenter-marmalade': 'https://fortnitefun.ru/wp-content/uploads/2026/06/konfetnyj-duh-nulevoj-tochki.webp',
+            'epicenter-cosmos': 'https://fortnitefun.ru/wp-content/uploads/2026/06/galakticheskij-duh-nulevoj-tochki.webp',
+            'epicenter-diamond': 'https://fortnitefun.ru/wp-content/uploads/2026/06/galakticheskij-duh-nulevoj-tochki.webp',
+
+            'peanut-simple': 'https://fortnitefun.ru/wp-content/uploads/2026/06/sgorevshij-arahis.webp',
+            'peanut-gold': 'https://fortnitefun.ru/wp-content/uploads/2026/06/sgorevshij-arahis.webp',
+            'peanut-marmalade': 'https://fortnitefun.ru/wp-content/uploads/2026/06/sgorevshij-arahis.webp',
+            'peanut-cosmos': 'https://fortnitefun.ru/wp-content/uploads/2026/06/sgorevshij-arahis.webp',
+            'peanut-diamond': 'https://fortnitefun.ru/wp-content/uploads/2026/06/sgorevshij-arahis.webp'
+        };
+
+        let checked = new Set();
+
+        const tbody = document.getElementById('tableBody');
+        const checkedSpan = document.getElementById('checkedCount');
+        const resetBtn = document.getElementById('resetBtn');
+
+        function getKey(spiritId, variant) {
+            return `${spiritId}-${variant}`;
+        }
+
+        function renderTable() {
+            tbody.innerHTML = '';
+
+            spirits.forEach(spirit => {
+                const tr = document.createElement('tr');
+
+                const nameTd = document.createElement('td');
+                nameTd.className = 'spirit-name-cell';
+                nameTd.textContent = spirit.name;
+                tr.appendChild(nameTd);
+
+                variants.forEach(variant => {
+                    const td = document.createElement('td');
+                    const key = getKey(spirit.id, variant);
+
+                    const container = document.createElement('div');
+                    container.className = 'spirit-item';
+
+                    const icon = document.createElement('div');
+                    icon.className = 'spirit-icon-small';
+                    icon.id = `icon-${key}`;
+
+                    const imagePath = imageMap[key];
+                    if (imagePath) {
+                        const img = document.createElement('img');
+                        img.src = imagePath;
+                        img.alt = `${spirit.name} - ${variant}`;
+                        img.onerror = function() {
+                            this.style.display = 'none';
+                            const placeholder = document.createElement('span');
+                            placeholder.className = 'spirit-icon-empty';
+                            placeholder.textContent = '📷';
+                            icon.appendChild(placeholder);
+                        };
+                        icon.appendChild(img);
+                    } else {
+                        const placeholder = document.createElement('span');
+                        placeholder.className = 'spirit-icon-empty';
+                        placeholder.textContent = '📷';
+                        icon.appendChild(placeholder);
+                    }
+
+                    container.appendChild(icon);
+
+                    const label = document.createElement('label');
+                    label.className = 'checkbox-square-small';
+
+                    const checkbox = document.createElement('input');
+                    checkbox.type = 'checkbox';
+                    checkbox.checked = checked.has(key);
+                    checkbox.dataset.key = key;
+                    checkbox.addEventListener('change', function(e) {
+                        if (this.checked) {
+                            checked.add(key);
+                        } else {
+                            checked.delete(key);
+                        }
+                        updateStats();
+                    });
+
+                    label.appendChild(checkbox);
+                    container.appendChild(label);
+                    td.appendChild(container);
+                    tr.appendChild(td);
+                });
+
+                tbody.appendChild(tr);
+            });
+
+            updateStats();
+        }
+
+        function updateStats() {
+            checkedSpan.textContent = checked.size;
+        }
+
+        function resetAll() {
+            checked.clear();
+            const allCheckboxes = document.querySelectorAll('#tableBody input[type="checkbox"]');
+            allCheckboxes.forEach(cb => cb.checked = false);
+            updateStats();
+        }
+
+        renderTable();
+        resetBtn.addEventListener('click', resetAll);
+    })();
+</script>
+</body>
+</html>
